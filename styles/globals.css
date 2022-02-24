@@ -1,16 +1,25 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@layer utilities {
+  .front {
+    transform: rotateY(90deg);
+    transition: all ease-in 0.2s;
+  }
 
-* {
-  box-sizing: border-box;
+  .front.flipped {
+    transform: rotateY(0deg);
+    transition-delay: 0.2s;
+  }
+
+  .back {
+    transition: all ease-in 0.2s;
+    transition-delay: 0.2s;
+  }
+
+  .back.flipped {
+    transform: rotateY(90deg);
+    transition-delay: 0s;
+  }
 }
