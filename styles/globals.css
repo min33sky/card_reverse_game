@@ -2,7 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
+@font-face {
+  font-family: 'Donoun-Medium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Donoun-Medium.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer components {
   .front {
     transform: rotateY(90deg);
     transition: all ease-in 0.2s;

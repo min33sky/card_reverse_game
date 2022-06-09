@@ -1,39 +1,8 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Card from '../components/Card';
-
-export interface IImage {
-  id: number;
-  src: string;
-  matched: boolean;
-}
-
-const images = [
-  {
-    src: '/img/helmet-1.png',
-    matched: false,
-  },
-  {
-    src: '/img/potion-1.png',
-    matched: false,
-  },
-  {
-    src: '/img/ring-1.png',
-    matched: false,
-  },
-  {
-    src: '/img/scroll-1.png',
-    matched: false,
-  },
-  {
-    src: '/img/shield-1.png',
-    matched: false,
-  },
-  {
-    src: '/img/sword-1.png',
-    matched: false,
-  },
-];
+import { images } from '../data/card';
+import { IImage } from '../typings/game';
 
 export default function Home() {
   const [cards, setCards] = useState<IImage[]>([]);
@@ -88,23 +57,19 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center bg-slate-800 text-slate-300 ">
+    <>
       <Head>
         <title>Card Game ✨</title>
       </Head>
-      <div>
-        <h1 className="mt-4 text-center text-3xl font-bold">Card Game</h1>
-        <div className="my-10 flex items-center justify-between">
-          <p>Turns: {turns}</p>
-          <button
-            className="rounded-lg bg-slate-500 px-3 py-2 text-slate-300 transition-colors hover:bg-slate-600"
-            onClick={shuffleCards}
-          >
-            Start Game
-          </button>
-        </div>
 
-        <div className="grid max-w-2xl grid-cols-4 gap-4">
+      <div className="flex min-h-screen w-full flex-col items-center justify-between bg-gradient-to-r from-violet-900 to-violet-800 text-slate-300">
+        <header>
+          <h1 className="font-header mt-8 select-none text-center text-3xl font-bold">
+            카드 짝 맞추기 게임 🚀
+          </h1>
+        </header>
+
+        <main className="mx-2 grid max-w-2xl grid-cols-4 gap-4">
           {cards.map((card) => (
             <Card
               key={card.id}
@@ -113,8 +78,18 @@ export default function Home() {
               flipped={card === choiceOne || card === choiceTwo || card.matched}
             />
           ))}
-        </div>
+        </main>
+
+        <footer className="mb-10 flex w-3/4  max-w-2xl items-center justify-between">
+          <p className="select-none text-2xl font-bold">턴: {turns}</p>
+          <button
+            className="select-none rounded-lg bg-orange-400 px-3 py-2 text-lg font-bold text-slate-800 transition-colors hover:bg-orange-600"
+            onClick={shuffleCards}
+          >
+            게임 시작
+          </button>
+        </footer>
       </div>
-    </div>
+    </>
   );
 }
